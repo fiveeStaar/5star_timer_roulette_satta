@@ -43,7 +43,6 @@ if (x) {
     moment(new Date()).format("HH:mm:ss"),
     secondsUntilNextMinute
   );
-  ////////////
   setTimeout(() => {
     rouletteResult(io);
     timeToSend(io);
