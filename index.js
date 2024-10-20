@@ -49,7 +49,6 @@ if (x) {
     x = false;
   }, secondsUntilNextMinute * 1000);
 }
-///////////// ///////////
 app.get("/", (req, res) => {
   res.send(`<h1>server running at port=====> ${PORT}</h1>`);
 });
