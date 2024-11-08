@@ -1,11 +1,16 @@
 // const schedule = require("node-cron");
 const schedule = require("node-schedule");
 const { queryDb } = require("../helper/adminHelper");
+const soment = require("moment-timezone");
+
 exports.timeToSend = (io) => {
   const job = schedule.scheduleJob("* * * * * *", function () {
-    const currentTime = new Date().getSeconds(); // Get the current time
-    const timeToSend = currentTime > 0 ? 60 - currentTime : currentTime;
-    io.emit("seconds", timeToSend);
+    const now = new Date();
+    const nowIST = soment(now).tz("Asia/Kolkata");
+
+    const currentMinute = nowIST.minutes();
+    const currentSecond = nowIST.seconds();
+    io.emit("seconds", `${currentMinute}_${currentSecond}`);
   });
 };
 
