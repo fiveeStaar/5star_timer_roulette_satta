@@ -37,7 +37,7 @@ exports.rouletteResult = (io) => {
         job?.cancel();
         setTimeout(() => {
           generatedTimeEveryAfterEveryOneMinForRollet();
-        }, 10000);
+        }, 27000);
       } else {
         second--;
       }
