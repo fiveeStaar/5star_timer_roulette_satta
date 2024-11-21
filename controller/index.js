@@ -21,7 +21,6 @@ exports.rouletteResult = (io) => {
     let second = 59;
     let job = schedule.scheduleJob("* * * * * *", async function () {
       io.emit("oneminrollet", second); // Emit the formatted time
-      console.log(second);
       if (second === 5) {
         try {
           callAPI();
@@ -31,6 +30,7 @@ exports.rouletteResult = (io) => {
       }
       if (second === 0) {
         second = 59;
+        console.log("result", resultToBeSend);
         io.emit("rolletresult", resultToBeSend);
         job?.cancel();
         job?.cancel();
